@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Bienvenidos {% endblock %}</title>
+    <!-- Incluir Tailwind CSS desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Crear Anuncio</h1>
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                <!-- Campo: Título -->
+                <div>
+                    <label for="id_titulo" class="block text-sm font-medium text-gray-700">Título</label>
+                    {{ form.titulo }}
+                </div>
+                <!-- Campo: Autor -->
+                <div>
+                    <label for="id_autor" class="block text-sm font-medium text-gray-700">Autor</label>
+                    {{ form.autor }}
+                </div>
+                <!-- Campo: Edición -->
+                <div>
+                    <label for="id_edicion" class="block text-sm font-medium text-gray-700">Edición</label>
+                    {{ form.edicion }}
+                </div>
+                <!-- Campo: Estado -->
+                <div>
+                    <label for="id_estado" class="block text-sm font-medium text-gray-700">Estado</label>
+                    {{ form.estado }}
+                </div>
+                <!-- Campo: Precio -->
+                <div>
+                    <label for="id_precio" class="block text-sm font-medium text-gray-700">Precio</label>
+                    {{ form.precio }}
+                </div>
+                <!-- Campo: Condiciones de Intercambio -->
+                <div>
+                    <label for="id_condiciones_intercambio" class="block text-sm font-medium text-gray-700">Condiciones de Intercambio</label>
+                    {{ form.condiciones_intercambio }}
+                </div>
+                <!-- Campo: Fecha de Publicación -->
+                <div>
+                    <label for="id_fecha_publicacion" class="block text-sm font-medium text-gray-700">Fecha de Publicación</label>
+                    {{ form.fecha_publicacion }}
+                </div>
+                <!-- Botón de Envío -->
+                <div class="text-center">
+                    <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                        Crear Anuncio
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
