@@ -1,0 +1,46 @@
+{% extends 'anuncios/base.html' %}
+
+{% block title %} Anuncios - Lista {% endblock %}
+
+{% block content %}
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Título de la página -->
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Anuncios Recientes</h1>
+
+        <!-- Botón para crear un nuevo anuncio -->
+        <div class="text-center mb-8">
+            <a href="{% url 'crear_anuncio' %}" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                Crear Nuevo Anuncio
+            </a>
+        </div>
+
+        <!-- Lista de anuncios -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for anuncio in anuncios %}
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <!-- Título del anuncio -->
+                <h2 class="text-xl font-bold text-gray-800 mb-2">{{ anuncio.titulo }}</h2>
+                <!-- Autor -->
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Autor:</span> {{ anuncio.autor }}</p>
+                <!-- Edición -->
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Edición:</span> {{ anuncio.edicion }}</p>
+                <!-- Estado -->
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Estado:</span> {{ anuncio.estado }}</p>
+                <!-- Precio -->
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Precio:</span> ${{ anuncio.precio }}</p>
+                <!-- Condiciones de Intercambio -->
+                <p class="text-gray-600 mb-4"><span class="font-semibold">Condiciones:</span> {{ anuncio.condiciones_intercambio }}</p>
+                <!-- Fecha de Publicación -->
+                <p class="text-sm text-gray-500">Publicado el: {{ anuncio.fecha_publicacion|date:"d/m/Y H:i" }}</p>
+            </div>
+            {% empty %}
+            <!-- Mensaje si no hay anuncios -->
+            <div class="col-span-full text-center text-gray-600">
+                No hay anuncios disponibles.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
