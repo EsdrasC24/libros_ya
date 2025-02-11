@@ -11,3 +11,8 @@ def crear(request):
         form = AnuncioForm()
     
     return render(request, 'crear_anuncio.html', {'form': form})
+
+
+def detalle_anuncio(request, id):
+    anuncio = get_object_or_404(Anuncio, id=id)  # Obtener el anuncio o mostrar un error 404 si no existe
+    return render(request, 'detalle_anuncio.html', {'anuncio': anuncio})
