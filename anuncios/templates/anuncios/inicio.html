@@ -1,0 +1,42 @@
+{% extends 'anuncios/base.html' %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="{% url 'inicio' %}" class="text-xl font-bold text-gray-800">
+                MiApp
+            </a>
+            <nav class="flex items-center space-x-6">
+                <a href="{% url 'crear_anuncio' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Crear Anuncio
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6">Anuncios Recientes</h1>
+
+        <!-- Lista de Anuncios Recientes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for anuncio in anuncios_recientes %}
+            <div class="bg-white shadow-md rounded px-6 py-4">
+                <h2 class="text-xl font-bold mb-2">{{ anuncio.titulo }}</h2>
+                <p class="text-gray-700 mb-2">{{ anuncio.contenido|truncatechars:100 }}</p>
+                <p class="text-gray-500 text-sm">Publicado por: {{ anuncio.autor.username }}</p>
+                <p class="text-gray-500 text-sm">Fecha: {{ anuncio.fecha_publicacion|date:"d/m/Y H:i" }}</p>
+                <a href="{% url 'detalle_anuncio' anuncio.id %}" 
+                   class="inline-block mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Ver más
+                </a>
+            </div>
+            {% empty %}
+            <p class="text-gray-700">No hay anuncios recientes.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

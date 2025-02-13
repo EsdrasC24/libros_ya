@@ -125,3 +125,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'iniciar_sesion'  # Cambia esto por la URL a la que quieres redirigir después del inicio de sesión
 LOGOUT_REDIRECT_URL = 'iniciar_sesion'  # Cambia esto por la URL a la que quieres redirigir después de cerrar sesión
+
+# settings.py
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',  # Origen para desarrollo local con HTTPS
+    'https://tudominio.com',   # Origen para producción
+    'https://api.tudominio.com',  # Si tienes un subdominio
+]

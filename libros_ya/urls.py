@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from credenciales import views as credenciales_views
+from anuncios import views as anuncios_views
 
 urlpatterns = [
-    path('', auth_views.LoginView.as_view(template_name='credenciales/iniciar_sesion.html'), name='iniciar_sesion'),
+    path('', credenciales_views.iniciar_sesion, name='iniciar_sesion'),
+    path('inicio', anuncios_views.inicio, name='inicio'),
     path('admin/', admin.site.urls),
     path('cerrar-sesion/', auth_views.LogoutView.as_view(), name='cerrar_sesion'),
-    path('registro/', credenciales_views.registro, name='registro'),
+    path('registro/', credenciales_views.registrar, name='registro'),
     path('anuncios/', include('anuncios.urls'))
 ]

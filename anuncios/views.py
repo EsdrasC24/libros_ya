@@ -61,3 +61,12 @@ def editar(request, id):
 def lista(request):
     anuncios = Anuncio.objects.all()  # Obtener todos los anuncios
     return render(request, 'anuncios/lista.html', {'anuncios': anuncios})
+
+
+
+
+# DAHASBOARD
+def inicio(request):
+    # Obtener los 3 anuncios más recientes
+    anuncios_recientes = Anuncio.objects.all().order_by('-fecha_publicacion')[:3]
+    return render(request, 'anuncios/inicio.html', {'anuncios_recientes': anuncios_recientes})
