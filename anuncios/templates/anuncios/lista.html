@@ -1,0 +1,53 @@
+{% extends 'anuncios/base.html' %}
+
+{% block title %} Listado de anuncios {% endblock %}
+
+{% block content %}
+<script>
+    function confirmarEliminacion(anuncioId) {
+        if (confirm("¿Estás seguro de que quieres eliminar este anuncio?")) {
+            window.location.href = `/anuncios/eliminar/${anuncioId}/`;
+        }
+    }
+</script>
+
+
+<h1 class="text-2xl font-bold mb-6">Listado de Anuncios</h1>
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Título</th>
+                <th class="py-2 px-4 border-b">Autor</th>
+                <th class="py-2 px-4 border-b">Edición</th>
+                <th class="py-2 px-4 border-b">Estado</th>
+                <th class="py-2 px-4 border-b">Precio</th>
+                <th class="py-2 px-4 border-b">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for anuncio in anuncios %}
+            <tr class="hover:bg-gray-50">
+                <td class="py-2 px-4 border-b">{{ anuncio.titulo }}</td>
+                <td class="py-2 px-4 border-b">{{ anuncio.autor.username }}</td>
+                <td class="py-2 px-4 border-b">{{ anuncio.edicion }}</td>
+                <td class="py-2 px-4 border-b">{{ anuncio.estado }}</td>
+                <td class="py-2 px-4 border-b">${{ anuncio.precio }}</td>
+                <td class="py-2 px-4 border-b">
+                    <a href="{% url 'editar_anuncio' anuncio.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                        Editar
+                    </a>
+                    <button onclick="confirmarEliminacion({{ anuncio.id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="py-2 px-4 border-b text-center">No hay anuncios disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

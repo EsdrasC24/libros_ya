@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'anuncios',
-    'estudiantes',
-    'libros',
+    'credenciales',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +123,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = 'iniciar_sesion'  # Cambia esto por la URL a la que quieres redirigir después del inicio de sesión
+LOGOUT_REDIRECT_URL = 'iniciar_sesion'  # Cambia esto por la URL a la que quieres redirigir después de cerrar sesión

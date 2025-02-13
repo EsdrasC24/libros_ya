@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center text-amber-800">Registrar Usuario</h2>
+        <form>
+            <!-- Campo de nombre completo -->
+            <div class="mb-4">
+                <label for="fullname" class="block text-sm font-medium text-amber-700">Nombre Completo</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- Icono de usuario -->
+                        <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <input type="text" id="fullname" name="fullname" class="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 pr-4 py-2 border border-amber-300 rounded-md" placeholder="Ingresa tu nombre completo" required>
+                </div>
+            </div>
+
+            <!-- Campo de correo electrónico -->
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-amber-700">Correo Electrónico</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- Icono de correo electrónico -->
+                        <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                    </div>
+                    <input type="email" id="email" name="email" class="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 pr-4 py-2 border border-amber-300 rounded-md" placeholder="Ingresa tu correo electrónico" required>
+                </div>
+            </div>
+
+            <!-- Campo de contraseña -->
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-amber-700">Contraseña</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- Icono de contraseña -->
+                        <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <input type="password" id="password" name="password" class="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 pr-4 py-2 border border-amber-300 rounded-md" placeholder="Crea una contraseña" required>
+                </div>
+            </div>
+
+            <!-- Campo de confirmación de contraseña -->
+            <div class="mb-6">
+                <label for="confirm-password" class="block text-sm font-medium text-amber-700">Confirmar Contraseña</label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- Icono de contraseña -->
+                        <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <input type="password" id="confirm-password" name="confirm-password" class="focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 pr-4 py-2 border border-amber-300 rounded-md" placeholder="Confirma tu contraseña" required>
+                </div>
+            </div>
+
+            <!-- Botón de registro -->
+            <button type="submit" class="w-full bg-amber-600 text-white py-2 px-4 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                Registrarse
+            </button>
+
+            <!-- Enlace para iniciar sesión -->
+            <div class="mt-6 text-center">
+                <p class="text-sm text-amber-600">¿Ya tienes una cuenta? <a href="{% url 'iniciar_sesion' %}" class="text-amber-600 hover:text-amber-500">Inicia Sesión</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
