@@ -1,0 +1,55 @@
+{% extends 'anuncios/base.html' %}
+
+{% block title %} Anuncio - Detalles {% endblock %}
+
+{% block contenido %}
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Botón para volver a la lista de anuncios -->
+        <div class="mb-6">
+            <a href="{% url 'lista_anuncios' %}" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition duration-300">
+                Volver a la lista
+            </a>
+        </div>
+
+        <!-- Contenedor del anuncio -->
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <!-- Título del anuncio -->
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ anuncio.titulo }}</h1>
+
+            <!-- Información del anuncio -->
+            <div class="space-y-4">
+                <!-- Autor -->
+                <div>
+                    <span class="font-semibold text-gray-700">Autor:</span>
+                    <span class="text-gray-600">{{ anuncio.autor }}</span>
+                </div>
+                <!-- Edición -->
+                <div>
+                    <span class="font-semibold text-gray-700">Edición:</span>
+                    <span class="text-gray-600">{{ anuncio.edicion }}</span>
+                </div>
+                <!-- Estado -->
+                <div>
+                    <span class="font-semibold text-gray-700">Estado:</span>
+                    <span class="text-gray-600">{{ anuncio.estado }}</span>
+                </div>
+                <!-- Precio -->
+                <div>
+                    <span class="font-semibold text-gray-700">Precio:</span>
+                    <span class="text-gray-600">${{ anuncio.precio }}</span>
+                </div>
+                <!-- Condiciones de Intercambio -->
+                <div>
+                    <span class="font-semibold text-gray-700">Condiciones de Intercambio:</span>
+                    <p class="text-gray-600">{{ anuncio.condiciones_intercambio }}</p>
+                </div>
+                <!-- Fecha de Publicación -->
+                <div>
+                    <span class="font-semibold text-gray-700">Fecha de Publicación:</span>
+                    <span class="text-gray-600">{{ anuncio.fecha_publicacion|date:"d/m/Y H:i" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
